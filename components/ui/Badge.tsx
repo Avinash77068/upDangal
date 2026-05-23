@@ -14,14 +14,17 @@ export default function Badge({ children, variant = 'primary', className, color 
     primary:   'bg-[var(--primary)] text-white',
     live:      'bg-red-600 text-white',
     breaking:  'bg-red-600 text-white animate-pulse',
-    trending:  'bg-orange-500 text-white',
+    trending:  'text-white',
     sponsored: 'bg-gray-500 text-white',
     category:  color ? '' : 'bg-[var(--primary)] text-white',
   }
 
-  const style = variant === 'category' && color
-    ? { backgroundColor: color, color: 'white' }
-    : undefined
+  const style: React.CSSProperties =
+    variant === 'category' && color
+      ? { backgroundColor: color, color: 'white' }
+      : variant === 'trending'
+        ? { backgroundColor: 'var(--primary)', color: 'white' }
+        : {}
 
   return (
     <span className={cn(base, variants[variant], className)} style={style}>

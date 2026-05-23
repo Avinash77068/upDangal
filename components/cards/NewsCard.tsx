@@ -53,7 +53,7 @@ export default function NewsCard({ article, index = 0 }: NewsCardProps) {
               {article.category}
             </span>
             {article.isTrending && (
-              <span className="text-[10px] font-bold text-orange-500 uppercase">🔥 ट्रेंडिंग</span>
+              <span className="text-[10px] font-bold uppercase" style={{ color: 'var(--primary)' }}>🔥 ट्रेंडिंग</span>
             )}
           </div>
 

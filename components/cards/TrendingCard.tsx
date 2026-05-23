@@ -31,7 +31,7 @@ export default function TrendingCard({ topic, index = 0 }: TrendingCardProps) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-1.5 mb-0.5">
             <span className="text-[10px] text-gray-400 uppercase font-medium">{topic.category}</span>
-            {topic.isHot && <Flame size={10} className="text-orange-500" />}
+            {topic.isHot && <Flame size={10} style={{ color: 'var(--primary)' }} fill="currentColor" />}
           </div>
           <h4 className="text-gray-800 font-semibold text-sm leading-tight group-hover:text-[var(--primary)] transition-colors line-clamp-1">
             {topic.title}
@@ -40,7 +40,7 @@ export default function TrendingCard({ topic, index = 0 }: TrendingCardProps) {
 
         {/* Views */}
         <div className="flex items-center gap-1 text-gray-400 text-xs flex-shrink-0">
-          <TrendingUp size={11} className={topic.isHot ? 'text-orange-500' : ''} />
+          <TrendingUp size={11} style={topic.isHot ? { color: 'var(--primary)' } : {}} />
           <span>{topic.views}</span>
         </div>
       </Link>

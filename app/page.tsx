@@ -21,7 +21,7 @@ export default function HomePage() {
 
       {/* Hero */}
       <Suspense fallback={
-        <div className="max-w-screen-xl mx-auto px-4 lg:px-6 py-5">
+        <div className="max-w-screen-xl mx-auto px-4 lg:px-6 py-5" style={{ color: 'var(--primary)' }}>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <div className="lg:col-span-2"><SkeletonHeroCard /></div>
             <div className="space-y-3">
@@ -42,7 +42,7 @@ export default function HomePage() {
             <TrendingSection />
 
             {/* BJP Section */}
-            <div className="bg-white rounded-2xl p-5 shadow-sm">
+            <div className=" rounded-2xl p-5 shadow-sm" style={{ color: 'var(--primary)' }}>
               <CategorySection categorySlug="bjp" />
             </div>
 

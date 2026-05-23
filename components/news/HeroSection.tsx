@@ -11,7 +11,7 @@ export default function HeroSection() {
   const liveArticles = articles.filter((a) => a.isLive || a.isBreaking).slice(0, 3)
 
   return (
-    <section className="max-w-screen-xl mx-auto px-4 lg:px-6 py-5">
+    <section className="max-w-screen-xl mx-auto px-4 lg:px-6 py-5" style={{ color: 'var(--primary)' }}>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Featured hero article */}
         <div className="lg:col-span-2">

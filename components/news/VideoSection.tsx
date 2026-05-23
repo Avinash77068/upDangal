@@ -65,7 +65,7 @@ export default function VideoSection() {
               >
                 {featured.category}
               </span>
-              <h3 className="text-white font-bold text-base leading-snug line-clamp-2 group-hover:text-orange-300 transition-colors">
+              <h3 className="text-white font-bold text-base leading-snug line-clamp-2 group-hover:text-[var(--accent)] transition-colors">
                 {featured.title}
               </h3>
               <p className="text-gray-400 text-xs mt-2">{featured.views} views · {featured.author.name}</p>
