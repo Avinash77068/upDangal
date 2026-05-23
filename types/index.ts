@@ -54,6 +54,7 @@ export interface AdItem {
   sponsor: string
   tagline?: string
   bgColor?: string
+  image?: string
 }
 
 export interface TrendingTopic {

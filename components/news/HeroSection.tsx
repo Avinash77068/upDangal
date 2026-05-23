@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import { articles } from '@/data/articles'
 import HeroCard from '@/components/cards/HeroCard'
 import LiveNewsCard from '@/components/cards/LiveNewsCard'
+import { sidebarAds } from '@/data/ads'
+import SidebarAd from '../ads/SidebarAd'
 
 export default function HeroSection() {
   const featured = articles[0]
@@ -20,7 +22,7 @@ export default function HeroSection() {
 
         {/* Side cards */}
         <div className="flex flex-col gap-3">
-          {sideArticles.map((article, i) => (
+          {/* {sideArticles.map((article, i) => (
             <motion.div
               key={article.id}
               initial={{ opacity: 0, x: 20 }}
@@ -29,7 +31,14 @@ export default function HeroSection() {
             >
               <LiveNewsCard article={article} index={i} />
             </motion.div>
-          ))}
+          ))} */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 0.1 + sideArticles.length * 0.08 }}
+          >
+            <SidebarAd image={sidebarAds[1].image} />
+          </motion.div>
         </div>
       </div>
 

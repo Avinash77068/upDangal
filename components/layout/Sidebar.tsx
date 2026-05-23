@@ -10,7 +10,7 @@ export default function Sidebar() {
   return (
     <aside className="space-y-6 sidebar-sticky">
       {/* First sidebar ad */}
-      <SidebarAd ad={sidebarAds[0]} />
+      <SidebarAd ad={sidebarAds[0]} image={sidebarAds[0].image} />
 
       {/* Trending topics */}
       <div className="bg-white rounded-xl overflow-hidden shadow-sm">
@@ -29,7 +29,7 @@ export default function Sidebar() {
       </div>
 
       {/* Second sidebar ad */}
-      <SidebarAd ad={sidebarAds[1]} />
+      <SidebarAd image={sidebarAds[1].image} />
 
       {/* Categories widget */}
       <div className="bg-white rounded-xl overflow-hidden shadow-sm">

@@ -21,6 +21,7 @@ export const sidebarAds: AdItem[] = [
     sponsor: 'SBI Life',
     tagline: 'Sponsored',
     bgColor: '#1B4332',
+    image: '/ads/rohit.png',
   },
   {
     id: 'sb2',
@@ -31,6 +32,7 @@ export const sidebarAds: AdItem[] = [
     sponsor: 'HDFC Bank',
     tagline: 'Advertisement',
     bgColor: '#1D1D1D',
+    image: '/ads/client.png',
   },
   {
     id: 'sb3',

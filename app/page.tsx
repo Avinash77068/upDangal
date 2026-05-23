@@ -17,9 +17,9 @@ export default function HomePage() {
   return (
     <>
       {/* Leaderboard ad */}
-      <div className="max-w-screen-xl mx-auto px-4 lg:px-6 pt-3">
+      {/* <div className="max-w-screen-xl mx-auto px-4 lg:px-6 pt-3">
         <AdBanner ad={leaderboardAd} />
-      </div>
+      </div> */}
 
       {/* Hero */}
       <Suspense fallback={
@@ -44,36 +44,36 @@ export default function HomePage() {
             <TrendingSection />
 
             {/* BJP */}
-            <div className="rounded-2xl p-5 shadow-sm" style={sectionStyle}>
+            <div  style={sectionStyle}>
               <CategorySection categorySlug="bjp" />
             </div>
 
             <InlineAd ad={inlineAds[0]} />
 
             {/* Congress */}
-            <div className="rounded-2xl p-5 shadow-sm" style={sectionStyle}>
+            <div  style={sectionStyle}>
               <CategorySection categorySlug="congress" />
             </div>
 
             {/* Video */}
-            <div className="rounded-2xl p-5 shadow-sm" style={sectionStyle}>
+            <div  style={sectionStyle}>
               <VideoSection />
             </div>
 
             <InlineAd ad={inlineAds[1]} />
 
             {/* KJP */}
-            <div className="rounded-2xl p-5 shadow-sm" style={sectionStyle}>
+            <div  style={sectionStyle}>
               <CategorySection categorySlug="kjp" />
             </div>
 
             {/* Shorts */}
-            <div className="rounded-2xl p-5 shadow-sm" style={sectionStyle}>
+            <div  style={sectionStyle}>
               <ShortsSection />
             </div>
 
             {/* Sponsored content */}
-            <div className="rounded-2xl p-5 shadow-sm" style={sectionStyle}>
+            <div  style={sectionStyle}>
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-xs font-bold uppercase tracking-widest" style={{ color: 'var(--primary)' }}>
                   Sponsored Content
@@ -93,7 +93,7 @@ export default function HomePage() {
             </div>
 
             {/* Alliance Watch */}
-            <div className="rounded-2xl p-5 shadow-sm" style={sectionStyle}>
+            <div  style={sectionStyle}>
               <CategorySection categorySlug="alliance" />
             </div>
 
