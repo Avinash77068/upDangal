@@ -1,26 +1,155 @@
 @import "tailwindcss";
 
+/* ── Default (orange) theme tokens ───────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary:        #E8541A;
+  --primary-hover:  #C94315;
+  --primary-light:  #FEF3EE;
+  --primary-dark:   #7C2D12;
+  --nav-bg:         #1C0A00;
+  --header-bar:     #E8541A;
+  --accent:         #F97316;
+  --accent-gold:    #D97706;
+  --breaking-bg:    #DC2626;
+  --section-head:   #1C0A00;
+  --card-badge:     #E8541A;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ── Green theme overrides ────────────────────────────────────────────────── */
+.theme-green {
+  --primary:        #15803D;
+  --primary-hover:  #166534;
+  --primary-light:  #F0FDF4;
+  --primary-dark:   #052E16;
+  --nav-bg:         #052E16;
+  --header-bar:     #15803D;
+  --accent:         #22C55E;
+  --accent-gold:    #84CC16;
+  --breaking-bg:    #DC2626;
+  --section-head:   #052E16;
+  --card-badge:     #15803D;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Tailwind v4 @theme: map CSS vars to utility tokens ──────────────────── */
+@theme {
+  --color-primary:        var(--primary);
+  --color-primary-hover:  var(--primary-hover);
+  --color-primary-light:  var(--primary-light);
+  --color-primary-dark:   var(--primary-dark);
+  --color-nav-bg:         var(--nav-bg);
+  --color-header-bar:     var(--header-bar);
+  --color-accent:         var(--accent);
+  --color-accent-gold:    var(--accent-gold);
+  --color-breaking:       var(--breaking-bg);
+  --color-section-head:   var(--section-head);
+  --color-card-badge:     var(--card-badge);
+
+  /* Typography */
+  --font-hindi: 'Noto Sans Devanagari', 'Arial', sans-serif;
+  --font-sans:  var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono:  var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/* ── Base styles ──────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #F3F4F6;
+  color: #111827;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s ease;
 }
+
+/* ── Scrollbar styling ────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary-hover); }
+
+/* ── Breaking ticker animation ────────────────────────────────────────────── */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-animate {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker 40s linear infinite;
+  will-change: transform;
+}
+.ticker-animate:hover { animation-play-state: paused; }
+
+/* ── Pulse for live badge ─────────────────────────────────────────────────── */
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+.pulse-live { animation: pulse-live 1.5s ease-in-out infinite; }
+
+/* ── Line-clamp utilities ─────────────────────────────────────────────────── */
+.line-clamp-1 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; }
+.line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+
+/* ── Category border accent ───────────────────────────────────────────────── */
+.section-border-left {
+  border-left: 4px solid var(--primary);
+  padding-left: 12px;
+  width: auto;
+  height: auto;
+}
+
+/* ── Card hover shadow ────────────────────────────────────────────────────── */
+.card-hover {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card-hover:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* ── Gradient overlay for image cards ────────────────────────────────────── */
+.img-gradient::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+}
+
+/* ── Smooth theme transition ──────────────────────────────────────────────── */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.1s ease;
+}
+/* Exclude animations from global transition */
+.ticker-animate, .ticker-animate * { transition: none; }
+
+/* ── Ad placeholder styles ────────────────────────────────────────────────── */
+.ad-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9CA3AF;
+  background: #F3F4F6;
+  border: 1px solid #E5E7EB;
+  padding: 1px 6px;
+  border-radius: 2px;
+}
+
+/* ── Sticky sidebar ───────────────────────────────────────────────────────── */
+.sidebar-sticky {
+  position: sticky;
+  top: 80px;
+}
+
+/* ── Fade in animation ────────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up { animation: fadeInUp 0.5s ease both; }
+.fade-in-up-delay-1 { animation-delay: 0.1s; }
+.fade-in-up-delay-2 { animation-delay: 0.2s; }
+.fade-in-up-delay-3 { animation-delay: 0.3s; }
