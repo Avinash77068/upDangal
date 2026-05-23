@@ -21,7 +21,7 @@ export default function HeroSection() {
         </div>
 
         {/* Side cards */}
-        <div className="flex flex-col gap-3">
+        <div className="hidden sm:flex sm:flex-col gap-3">
           {/* {sideArticles.map((article, i) => (
             <motion.div
               key={article.id}

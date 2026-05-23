@@ -9,18 +9,14 @@ import AdBanner from '@/components/ads/AdBanner'
 import InlineAd from '@/components/ads/InlineAd'
 import SponsoredCard from '@/components/ads/SponsoredCard'
 import { SkeletonHeroCard, SkeletonNewsCard } from '@/components/ui/SkeletonCard'
-import { leaderboardAd, inlineAds, sponsoredArticleAd } from '@/data/ads'
+import { leaderboardAd, inlineAds, sponsoredArticleAd, sidebarAds } from '@/data/ads'
+import SidebarAd from '@/components/ads/SidebarAd'
 
 const sectionStyle = { background: 'var(--primary-light)' }
 
 export default function HomePage() {
   return (
     <>
-      {/* Leaderboard ad */}
-      {/* <div className="max-w-screen-xl mx-auto px-4 lg:px-6 pt-3">
-        <AdBanner ad={leaderboardAd} />
-      </div> */}
-
       {/* Hero */}
       <Suspense fallback={
         <div className="max-w-screen-xl mx-auto px-4 lg:px-6 py-5">
@@ -32,11 +28,14 @@ export default function HomePage() {
           </div>
         </div>
       }>
+       <div className='flex'>
+         <SidebarAd className="w-[500px]" image={sidebarAds[0].image} />
         <HeroSection />
+       </div>
       </Suspense>
 
       {/* Main content + Sidebar */}
-      <div className="max-w-screen-xl mx-auto px-4 lg:px-6">
+      <div className="px-4 lg:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           <div className="lg:col-span-3 space-y-4">
 

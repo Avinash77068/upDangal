@@ -3,14 +3,17 @@ import type { AdItem } from '@/types'
 interface SidebarAdProps {
   ad?: AdItem
   image?: string
+  className?: string
 }
 
-export default function SidebarAd({ ad, image }: SidebarAdProps) {
+export default function SidebarAd({ ad, image, className }: SidebarAdProps) {
   return (
     <>
       {
         image ? (
-          <img src={image} alt="Ad" className="w-full h-auto shadow-lg" />
+          <div className={`overflow-hidden hidden sm:flex rounded-lg border border-gray-200 shadow-sm ${className}`}>
+            <img src={image} alt="Ad" className={`w-full h-full shadow-lg`} />
+          </div>
         ) : ad ? (
           <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
             <div className="flex items-center justify-between px-3 py-1.5 bg-gray-50 border-b border-gray-200">
