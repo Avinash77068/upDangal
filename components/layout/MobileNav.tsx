@@ -1,15 +1,19 @@
 'use client'
 
 import Link from 'next/link'
-import { Home, Flame, Video, Newspaper, User } from 'lucide-react'
+import { Home, Newspaper, User } from 'lucide-react'
 import { usePathname } from 'next/navigation'
+import { navCategories } from '@/data/categories'
 
 const items = [
-  { href: '/', icon: Home, label: 'होम' },
-  { href: '/trending', icon: Flame, label: 'ट्रेंड' },
-  { href: '/videos', icon: Video, label: 'वीडियो' },
-  { href: '/politics', icon: Newspaper, label: 'राजनीति' },
-  { href: '/profile', icon: User, label: 'प्रोफाइल' },
+  { href: '/', icon: Home, label: 'होम', color: undefined },
+  ...navCategories.slice(0, 3).map((cat) => ({
+    href: `/${cat.slug}`,
+    icon: Newspaper,
+    label: cat.nameHindi,
+    color: cat.color,
+  })),
+  { href: '/profile', icon: User, label: 'प्रोफाइल', color: undefined },
 ]
 
 export default function MobileNav() {
@@ -21,8 +25,9 @@ export default function MobileNav() {
       style={{ background: 'var(--nav-bg)' }}
     >
       <div className="flex items-center justify-around h-14">
-        {items.map(({ href, icon: Icon, label }) => {
+        {items.map(({ href, icon: Icon, label, color }) => {
           const active = pathname === href
+          const activeColor = color ?? 'var(--primary)'
           return (
             <Link
               key={href}
@@ -31,7 +36,10 @@ export default function MobileNav() {
                 active ? 'text-white' : 'text-white/50 hover:text-white/80'
               }`}
             >
-              <div className={`p-1 rounded-lg transition-colors ${active ? 'bg-[var(--primary)]' : ''}`}>
+              <div
+                className="p-1 rounded-lg transition-colors"
+                style={active ? { background: activeColor } : undefined}
+              >
                 <Icon size={18} />
               </div>
               <span className="text-[10px] font-medium">{label}</span>

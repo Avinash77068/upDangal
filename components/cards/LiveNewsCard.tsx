@@ -9,7 +9,7 @@ import Badge from '@/components/ui/Badge'
 import { timeAgo } from '@/lib/utils'
 
 interface LiveNewsCardProps {
-  article?: Article
+  article?: Article | any
   index?: number
   image?: string
 }

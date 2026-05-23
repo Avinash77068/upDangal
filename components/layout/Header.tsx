@@ -6,6 +6,7 @@ import { Search, Menu, X, ChevronDown, Bell, Bookmark, User } from 'lucide-react
 import { motion, AnimatePresence } from 'framer-motion'
 import { navCategories } from '@/data/categories'
 import ThemeToggle from '@/components/ui/ThemeToggle'
+import Image from 'next/image'
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -39,15 +40,8 @@ export default function Header() {
         <div className="max-w-screen-xl mx-auto flex items-center h-14 gap-3">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center gap-2">
-            <div
-              className="w-9 h-9 rounded-lg flex items-center justify-center font-black text-white text-lg"
-              style={{ background: 'var(--primary)' }}
-            >
-              उ
-            </div>
             <div className="text-white">
-              <div className="text-lg font-black leading-none tracking-tight">UpDangal</div>
-              <div className="text-[9px] text-white/50 tracking-widest uppercase leading-none">भारत की आवाज़</div>
+              <img className='w-10 rounded-full object-cover scale-110' src="/logo/logo.png" alt="UpDangal" />
             </div>
           </Link>
 
