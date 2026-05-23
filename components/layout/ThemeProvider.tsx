@@ -20,7 +20,7 @@ const THEME_VARS = {
   green: {
     '--primary':       '#15803D',
     '--primary-hover': '#166534',
-    '--primary-light': '#F0FDF4',
+    '--primary-light': '#e4eee7',
     '--primary-dark':  '#052E16',
     '--nav-bg':        '#052E16',
     '--header-bar':    '#15803D',

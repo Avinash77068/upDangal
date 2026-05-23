@@ -19,7 +19,7 @@
 .theme-green {
   --primary:        #15803D;
   --primary-hover:  #166534;
-  --primary-light:  #F0FDF4;
+  --primary-light:  #10823F;
   --primary-dark:   #052E16;
   --nav-bg:         #052E16;
   --header-bar:     #15803D;
@@ -56,7 +56,7 @@ html {
 }
 
 body {
-  background: #F3F4F6;
+  background: var(--primary-light);
   color: #111827;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;

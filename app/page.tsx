@@ -11,6 +11,8 @@ import SponsoredCard from '@/components/ads/SponsoredCard'
 import { SkeletonHeroCard, SkeletonNewsCard } from '@/components/ui/SkeletonCard'
 import { leaderboardAd, inlineAds, sponsoredArticleAd } from '@/data/ads'
 
+const sectionStyle = { background: 'var(--primary-light)' }
+
 export default function HomePage() {
   return (
     <>
@@ -21,7 +23,7 @@ export default function HomePage() {
 
       {/* Hero */}
       <Suspense fallback={
-        <div className="max-w-screen-xl mx-auto px-4 lg:px-6 py-5" style={{ color: 'var(--primary)' }}>
+        <div className="max-w-screen-xl mx-auto px-4 lg:px-6 py-5">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <div className="lg:col-span-2"><SkeletonHeroCard /></div>
             <div className="space-y-3">
@@ -41,42 +43,42 @@ export default function HomePage() {
             {/* Trending */}
             <TrendingSection />
 
-            {/* BJP Section */}
-            <div className=" rounded-2xl p-5 shadow-sm" style={{ color: 'var(--primary)' }}>
+            {/* BJP */}
+            <div className="rounded-2xl p-5 shadow-sm" style={sectionStyle}>
               <CategorySection categorySlug="bjp" />
             </div>
 
             <InlineAd ad={inlineAds[0]} />
 
-            {/* Congress Section */}
-            <div className="bg-white rounded-2xl p-5 shadow-sm">
+            {/* Congress */}
+            <div className="rounded-2xl p-5 shadow-sm" style={sectionStyle}>
               <CategorySection categorySlug="congress" />
             </div>
 
-            {/* Video section */}
-            <div className="bg-white rounded-2xl p-5 shadow-sm">
+            {/* Video */}
+            <div className="rounded-2xl p-5 shadow-sm" style={sectionStyle}>
               <VideoSection />
             </div>
 
             <InlineAd ad={inlineAds[1]} />
 
-            {/* KJP Section */}
-            <div className="bg-white rounded-2xl p-5 shadow-sm">
+            {/* KJP */}
+            <div className="rounded-2xl p-5 shadow-sm" style={sectionStyle}>
               <CategorySection categorySlug="kjp" />
             </div>
 
             {/* Shorts */}
-            <div className="bg-white rounded-2xl p-5 shadow-sm">
+            <div className="rounded-2xl p-5 shadow-sm" style={sectionStyle}>
               <ShortsSection />
             </div>
 
             {/* Sponsored content */}
-            <div className="bg-white rounded-2xl p-5 shadow-sm">
+            <div className="rounded-2xl p-5 shadow-sm" style={sectionStyle}>
               <div className="flex items-center gap-3 mb-4">
-                <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">
+                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: 'var(--primary)' }}>
                   Sponsored Content
                 </span>
-                <div className="flex-1 h-px bg-gray-100" />
+                <div className="flex-1 h-px" style={{ background: 'var(--primary-light)' }} />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <SponsoredCard ad={sponsoredArticleAd} />
@@ -90,8 +92,8 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* BJP + Congress Alliance Watch */}
-            <div className="bg-white rounded-2xl p-5 shadow-sm">
+            {/* Alliance Watch */}
+            <div className="rounded-2xl p-5 shadow-sm" style={sectionStyle}>
               <CategorySection categorySlug="alliance" />
             </div>
 

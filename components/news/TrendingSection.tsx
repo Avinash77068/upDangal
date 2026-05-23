@@ -12,7 +12,7 @@ export default function TrendingSection() {
 
   return (
     <section className="max-w-screen-xl mx-auto px-4 lg:px-6 py-4">
-      <div className="bg-white rounded-2xl p-5 shadow-sm">
+      <div className="rounded-2xl p-5 shadow-sm" style={{ background: 'var(--primary-light)' }}>
         <SectionHeader title="Trending" titleHindi="ट्रेंडिंग" viewAllHref="/trending" />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
