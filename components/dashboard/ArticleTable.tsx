@@ -2,10 +2,13 @@
 
 import { Trash2, Radio, TrendingUp, Zap } from 'lucide-react'
 import { useArticlesStore } from '@/store/articlesStore'
+import { useAuthStore } from '@/store/authStore'
 import { timeAgo } from '@/lib/utils'
 
 export default function ArticleTable() {
   const { articles, deleteArticle } = useArticlesStore()
+  const role = useAuthStore((s) => s.user?.role)
+  const canDelete = role === 'admin' || role === 'editor'
 
   if (articles.length === 0) {
     return (
@@ -25,7 +28,7 @@ export default function ArticleTable() {
             <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Category</th>
             <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Status</th>
             <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wide">Published</th>
-            <th className="px-5 py-3 w-10" />
+            {canDelete && <th className="px-5 py-3 w-10" />}
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-50">
@@ -65,17 +68,19 @@ export default function ArticleTable() {
                 </div>
               </td>
               <td className="px-5 py-3.5 text-xs text-gray-400 whitespace-nowrap">
-                {timeAgo(article.publishedAt)}
+                {timeAgo(article?.publishedAt)}
               </td>
-              <td className="px-5 py-3.5">
-                <button
-                  onClick={() => deleteArticle(article.id)}
-                  className="p-1.5 text-gray-300 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                  title="Delete article"
-                >
-                  <Trash2 size={14} />
-                </button>
-              </td>
+              {canDelete && (
+                <td className="px-5 py-3.5">
+                  <button
+                    onClick={() => deleteArticle(article.id)}
+                    className="p-1.5 text-gray-300 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                    title="Delete article"
+                  >
+                    <Trash2 size={14} />
+                  </button>
+                </td>
+              )}
             </tr>
           ))}
         </tbody>

@@ -3,12 +3,27 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-const CREDENTIALS = { username: 'admin', password: 'updangal@123' }
+export type UserRole = 'admin' | 'editor' | 'reporter'
 
-interface AuthUser {
+interface Credential {
+  username: string
+  password: string
+  name: string
+  email: string
+  role: UserRole
+}
+
+const USERS: Credential[] = [
+  { username: 'admin',    password: 'updangal@123',  name: 'Admin',         email: 'admin@updangal.com',    role: 'admin'    },
+  { username: 'editor',   password: 'editor@123',    name: 'Editor',        email: 'editor@updangal.com',   role: 'editor'   },
+  { username: 'reporter', password: 'reporter@123',  name: 'Reporter',      email: 'reporter@updangal.com', role: 'reporter' },
+]
+
+export interface AuthUser {
   name: string
   email: string
   username: string
+  role: UserRole
 }
 
 interface AuthStore {
@@ -24,10 +39,13 @@ export const useAuthStore = create<AuthStore>()(
       user: null,
       isAuthenticated: false,
       login: (username, password) => {
-        if (username === CREDENTIALS.username && password === CREDENTIALS.password) {
+        const match = USERS.find(
+          (u) => u.username === username && u.password === password
+        )
+        if (match) {
           set({
             isAuthenticated: true,
-            user: { name: 'Admin', email: 'admin@updangal.com', username },
+            user: { name: match.name, email: match.email, username: match.username, role: match.role },
           })
           return true
         }

@@ -97,12 +97,26 @@ export default function LoginPage() {
           </button>
         </form>
 
-        <p className="text-center text-xs text-gray-400 mt-5">
-          Demo credentials:{' '}
-          <span className="font-mono text-gray-600">admin</span>
-          {' / '}
-          <span className="font-mono text-gray-600">updangal@123</span>
-        </p>
+        <div className="mt-5 bg-white rounded-xl border border-gray-100 p-4 space-y-2">
+          <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wide mb-2">Demo Credentials</p>
+          {[
+            { role: 'Admin',    user: 'admin',    pass: 'updangal@123', color: 'var(--primary)' },
+            { role: 'Editor',   user: 'editor',   pass: 'editor@123',   color: '#2563EB'        },
+            { role: 'Reporter', user: 'reporter', pass: 'reporter@123', color: '#16A34A'        },
+          ].map(({ role, user, pass, color }) => (
+            <div key={role} className="flex items-center justify-between text-xs">
+              <span
+                className="font-bold px-2 py-0.5 rounded text-white text-[10px]"
+                style={{ background: color }}
+              >
+                {role}
+              </span>
+              <span className="text-gray-500 font-mono">
+                {user} / {pass}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )

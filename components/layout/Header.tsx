@@ -103,13 +103,14 @@ export default function Header() {
 
             <ThemeToggle />
 
-            <button
+            <Link
+              href="/dashboard/login"
               className="hidden md:flex items-center gap-1.5 text-white text-xs font-bold px-3 py-1.5 rounded-full border border-white/30 hover:bg-white hover:text-gray-900 transition-all"
               aria-label="Sign in"
             >
               <User size={14} />
               लॉगिन
-            </button>
+            </Link>
 
             {/* Mobile menu toggle */}
             <button

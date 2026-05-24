@@ -3,23 +3,34 @@
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { LayoutDashboard, FileText, PlusCircle, LogOut, ExternalLink } from 'lucide-react'
-import { useAuthStore } from '@/store/authStore'
+import { useAuthStore, type UserRole } from '@/store/authStore'
 
-const navItems = [
-  { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { href: '/dashboard/articles', icon: FileText, label: 'Articles' },
-  { href: '/dashboard/articles/new', icon: PlusCircle, label: 'New Article' },
+type NavItem = {
+  href: string
+  icon: React.ElementType
+  label: string
+  roles: UserRole[]
+}
+
+const navItems: NavItem[] = [
+  { href: '/dashboard',              icon: LayoutDashboard, label: 'Dashboard',   roles: ['admin', 'editor', 'reporter'] },
+  { href: '/dashboard/articles',     icon: FileText,        label: 'Articles',    roles: ['admin', 'editor']             },
+  { href: '/dashboard/articles/new', icon: PlusCircle,      label: 'New Article', roles: ['admin', 'editor', 'reporter'] },
 ]
 
 export default function DashboardSidebar() {
   const pathname = usePathname()
   const router = useRouter()
+  const user = useAuthStore((s) => s.user)
   const logout = useAuthStore((s) => s.logout)
+  const role = user?.role ?? 'reporter'
 
   const handleLogout = () => {
     logout()
     router.push('/dashboard/login')
   }
+
+  const visible = navItems.filter((item) => item.roles.includes(role))
 
   return (
     <aside className="w-60 flex-shrink-0 flex flex-col h-full" style={{ background: 'var(--nav-bg)' }}>
@@ -28,9 +39,26 @@ export default function DashboardSidebar() {
         <img src="/logo/logo.png" alt="UpDangal" className="h-8" />
       </div>
 
+      {/* Role badge */}
+      <div className="px-4 py-3 border-b border-white/10 flex-shrink-0">
+        <p className="text-white/40 text-[10px] uppercase tracking-widest mb-1">Logged in as</p>
+        <div className="flex items-center gap-2">
+          <div
+            className="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold"
+            style={{ background: 'var(--primary)' }}
+          >
+            {user?.name?.[0] ?? 'A'}
+          </div>
+          <div>
+            <p className="text-white text-sm font-semibold leading-tight">{user?.name}</p>
+            <p className="text-white/50 text-[11px] capitalize">{user?.role}</p>
+          </div>
+        </div>
+      </div>
+
       {/* Nav */}
       <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">
-        {navItems.map(({ href, icon: Icon, label }) => {
+        {visible.map(({ href, icon: Icon, label }) => {
           const active = pathname === href
           return (
             <Link
