@@ -11,6 +11,7 @@ import SponsoredCard from '@/components/ads/SponsoredCard'
 import { SkeletonHeroCard, SkeletonNewsCard } from '@/components/ui/SkeletonCard'
 import { leaderboardAd, inlineAds, sponsoredArticleAd, sidebarAds } from '@/data/ads'
 import SidebarAd from '@/components/ads/SidebarAd'
+import UserArticlesSection from '@/components/news/UserArticlesSection'
 
 const sectionStyle = { background: 'var(--primary-light)' }
 
@@ -33,6 +34,8 @@ export default function HomePage() {
         <HeroSection />
        </div>
       </Suspense>
+
+      <UserArticlesSection />
 
       {/* Main content + Sidebar */}
       <div className="px-4 lg:px-6">
